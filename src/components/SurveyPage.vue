@@ -1,6 +1,7 @@
 <template>
   <div>
     {{ JSON.stringify(page) }}
+    <button type="button" @click="$emit('next-page')">Next</button>
   </div>
 </template>
 

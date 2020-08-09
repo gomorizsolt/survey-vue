@@ -1,4 +1,10 @@
-import Home from "../views/Home.vue";
+// import Home from "../views/Home.vue";
+
+const Home = () => import(/* webpackChunkName: "home" */ "../views/Home.vue");
+const About = () =>
+  import(/* webpackChunkName: "about" */ "../views/About.vue");
+const Survey = () =>
+  import(/* webpackChunkName: "survey" */ "../views/Survey.vue");
 
 const routes = [
   {
@@ -9,14 +15,12 @@ const routes = [
   {
     path: "/about",
     name: "About Us",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    component: About,
   },
   {
     path: "/survey",
     name: "Survey",
-    component: () =>
-      import(/* webpackChunkName: "survey" */ "../views/Survey.vue"),
+    component: Survey,
   },
 ];
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SurveyPage :page="currentPage" />
+    <SurveyPage :page="currentPage" @next-page="pageIndex++" />
   </div>
 </template>
 
