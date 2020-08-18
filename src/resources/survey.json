@@ -5,7 +5,7 @@
       {
         "name": "Page 1",
         "title": "Umfragearten",
-        "subttitle": "Haupts\u00e4chlich werden Sie von uns Einladungen zu Online-Umfragen erhalten. Aber Sie k\u00f6nnen auch an anderen spannenden Studien teilnehmen, bei denen Sie zus\u00e4tzliche Punkte erhalten k\u00f6nnen. <br><br>\r\nBitte w\u00e4hlen Sie aus der Liste diejenigen Studienarten, zu denen Sie gern Einladungen erhalten m\u00f6chten. ",
+        "subtitle": "Haupts\u00e4chlich werden Sie von uns Einladungen zu Online-Umfragen erhalten. Aber Sie k\u00f6nnen auch an anderen spannenden Studien teilnehmen, bei denen Sie zus\u00e4tzliche Punkte erhalten k\u00f6nnen. <br>\r\nBitte w\u00e4hlen Sie aus der Liste diejenigen Studienarten, zu denen Sie gern Einladungen erhalten m\u00f6chten. ",
         "questions": [
           {
             "code": "research_telephone_surveys",
@@ -193,7 +193,6 @@
         ]
       },
       {
-        "name": "Page 2",
         "questions": [
           {
             "code": "webcam_on_pc",
