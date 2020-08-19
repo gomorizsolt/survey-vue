@@ -4,13 +4,13 @@
       prevButtonText
     }}</a-button>
     <a-button
-      v-if="isFinalPage"
+      v-show="isFinalPage"
       type="danger"
       :disabled="isCompleteButtonDisabled"
       @click="completeSurvey"
       >{{ completeButtonText }}</a-button
     >
-    <a-button v-else @click="nextPage" type="danger">{{
+    <a-button v-show="!isFinalPage" @click="nextPage" type="danger">{{
       nextButtonText
     }}</a-button>
   </div>
