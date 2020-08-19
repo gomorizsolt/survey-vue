@@ -1,4 +1,5 @@
-import { NEXT_PAGE, PREV_PAGE, SAVE_NEW_ANSWER } from "./mutation-types";
+import { NEXT_PAGE, PREV_PAGE, SAVE_NEW_ANSWER, RESET } from "./mutation-types";
+import getDefaultState from "./get-default-state";
 
 const mutations = {
   [NEXT_PAGE](state) {
@@ -20,6 +21,11 @@ const mutations = {
 
     state.answers.push(payload);
   },
+  [RESET](state) {
+    // https://tahazsh.com/vuebyte-reset-module-state
+    // https://github.com/vuejs/vuex/issues/1118
+    Object.assign(state, getDefaultState());
+  }
 };
 
 export default mutations;

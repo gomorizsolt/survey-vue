@@ -1,31 +1,34 @@
 <template>
   <section>
+    <SurveyHeader />
     <div class="question" v-for="question in questions" :key="question.name">
-      <h3 :class="{ required: question.is_required }">{{ question.name }}</h3>
+      <h3 :class="{ required: question.is_required }">
+        {{ question.name }}
+      </h3>
       <p v-if="question.public_description">
         {{ question.public_description }}
       </p>
       <SurveyAnswerSelector
         :type="question.type"
         :name="question.name"
-        :choices="sanitizedChoices(question.choices)"
+        :choices="question.choices"
       />
     </div>
+    <SurveyFooter />
   </section>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import SurveyAnswerSelector from "./SurveyAnswerSelector";
+import SurveyHeader from "@/components/SurveyHeader";
+import SurveyAnswerSelector from "@/components/SurveyAnswerSelector";
+import SurveyFooter from "@/components/SurveyFooter";
 
 export default {
   components: {
+    SurveyHeader,
     SurveyAnswerSelector,
-  },
-  methods: {
-    sanitizedChoices(choices) {
-      return choices.map((choice) => Object.values(choice)[0]);
-    },
+    SurveyFooter,
   },
   computed: {
     ...mapGetters(["questions"]),

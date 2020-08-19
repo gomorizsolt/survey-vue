@@ -1,26 +1,25 @@
 <template>
-  <div>
-    <a-dropdown v-if="type === 'dropdown'" :trigger="['click']">
-      <a-button class="dropdown">
-        {{ selectedAnswer }} <a-icon type="down" />
-      </a-button>
-      <a-menu slot="overlay" @click="handleDropdownChange">
-        <a-menu-item v-for="choice in choices" :key="choice">
-          {{ choice }}
-        </a-menu-item>
-      </a-menu>
-    </a-dropdown>
+  <a-dropdown v-if="type === 'dropdown'" :trigger="['click']">
+    <a-button class="dropdown">
+      {{ selectedAnswer }}
+      <a-icon type="down" />
+    </a-button>
+    <a-menu slot="overlay" @click="handleDropdownChange">
+      <a-menu-item v-for="choice in sanitizedChoices" :key="choice">{{
+        choice
+      }}</a-menu-item>
+    </a-menu>
+  </a-dropdown>
 
-    <a-radio-group
-      v-if="type === 'radiogroup'"
-      v-model="selectedAnswer"
-      @change="handleRadioGroupChange"
-    >
-      <a-radio v-for="choice in choices" :key="choice" :value="choice">
-        {{ choice }}
-      </a-radio>
-    </a-radio-group>
-  </div>
+  <a-radio-group
+    v-else
+    v-model="selectedAnswer"
+    @change="handleRadioGroupChange"
+  >
+    <a-radio v-for="choice in sanitizedChoices" :key="choice" :value="choice">{{
+      choice
+    }}</a-radio>
+  </a-radio-group>
 </template>
 
 <script>
@@ -32,15 +31,11 @@ export default {
 
     if (answer?.value) {
       this.selectedAnswer = answer.value;
-
-      return;
     }
   },
-  data: function () {
-    return {
-      selectedAnswer: "",
-    };
-  },
+  data: () => ({
+    selectedAnswer: "",
+  }),
   props: {
     name: {
       type: String,
@@ -67,6 +62,9 @@ export default {
   },
   computed: {
     ...mapGetters(["getAnswerByName"]),
+    sanitizedChoices() {
+      return this.choices.map((choice) => Object.values(choice)[0]);
+    },
   },
   methods: {
     ...mapActions(["saveNewAnswer"]),

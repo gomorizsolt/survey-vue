@@ -1,13 +1,21 @@
 <template>
   <section class="home">
     <img src="@/assets/logo.svg" class="home__logo" alt="Talk" />
-    <a-button type="dashed" size="large" class="home__cta">
-      <router-link to="/survey">
-        Take part in survey <a-icon type="arrow-right" />
-      </router-link>
-    </a-button>
+    <NavButton to="/survey" class="home__cta">
+      Go to /survey <a-icon type="arrow-right" />
+    </NavButton>
   </section>
 </template>
+
+<script>
+import NavButton from "@/components/NavButton";
+
+export default {
+  components: {
+    NavButton,
+  },
+};
+</script>
 
 <style scoped>
 .home {
@@ -22,7 +30,8 @@
 }
 
 .home__cta {
-  margin: 2rem auto 0 auto;
+  margin-top: 2rem;
   display: block;
+  text-align: center;
 }
 </style>

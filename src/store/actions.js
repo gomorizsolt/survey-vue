@@ -1,4 +1,4 @@
-import { NEXT_PAGE, PREV_PAGE, SAVE_NEW_ANSWER } from "./mutation-types";
+import { NEXT_PAGE, PREV_PAGE, SAVE_NEW_ANSWER, RESET } from "./mutation-types";
 
 const actions = {
   nextPage({ commit }) {
@@ -10,6 +10,9 @@ const actions = {
   saveNewAnswer({ commit }, payload) {
     commit(SAVE_NEW_ANSWER, payload);
   },
+  reset({ commit }) {
+    commit(RESET);
+  }
 };
 
 export default actions;

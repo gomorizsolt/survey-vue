@@ -7,7 +7,17 @@ Vue.use(VueRouter);
 const HomeView = () =>
   import(/* webpackChunkName: "home" */ "@/views/Home.vue");
 const SurveyView = () =>
-  import(/* webpackChunkName: "survey" */ "@/views/Survey.vue");
+  import(/* webpackChunkName: "survey" */ "@/views/Survey/Survey.vue");
+const SurveyInfoView = () =>
+  import(/* webpackChunkName: "survey-info" */ "@/views/Survey/SurveyInfo.vue");
+const SurveyQuestionsView = () =>
+  import(
+    /* webpackChunkName: "survey-questions" */ "@/views/Survey/SurveyQuestions.vue"
+  );
+const SurveyCompletedView = () =>
+  import(
+    /* webpackChunkName: "survey-completed" */ "@/views/Survey/SurveyCompleted.vue"
+  );
 const PageNoutFoundView = () =>
   import(/* webpackChunkName: "not-found" */ "@/views/PageNotFound.vue");
 
@@ -16,7 +26,24 @@ const router = new VueRouter({
   fallback: false,
   routes: [
     { path: "/", component: HomeView },
-    { path: "/survey", component: SurveyView },
+    {
+      path: "/survey",
+      component: SurveyView,
+      children: [
+        {
+          path: "",
+          component: SurveyInfoView,
+        },
+        {
+          path: "questions",
+          component: SurveyQuestionsView,
+        },
+        {
+          path: "completed",
+          component: SurveyCompletedView,
+        },
+      ],
+    },
     { path: "*", component: PageNoutFoundView },
   ],
 });

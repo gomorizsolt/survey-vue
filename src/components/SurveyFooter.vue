@@ -1,18 +1,18 @@
 <template>
   <div class="survey-footer">
-    <a-button @click="prevPage" :disabled="isPrevPageButtonDisabled">
-      {{ prevButtonText }}
-    </a-button>
+    <a-button @click="prevPage" :disabled="isPrevPageButtonDisabled">{{
+      prevButtonText
+    }}</a-button>
     <a-button
       v-if="isFinalPage"
       type="danger"
       :disabled="isCompleteButtonDisabled"
+      @click="completeSurvey"
+      >{{ completeButtonText }}</a-button
     >
-      {{ completeButtonText }}
-    </a-button>
-    <a-button v-else @click="nextPage" type="danger">
-      {{ nextButtonText }}
-    </a-button>
+    <a-button v-else @click="nextPage" type="danger">{{
+      nextButtonText
+    }}</a-button>
   </div>
 </template>
 
@@ -48,6 +48,9 @@ export default {
   },
   methods: {
     ...mapActions(["nextPage", "prevPage"]),
+    completeSurvey() {
+      this.$router.push("/survey/completed");
+    },
   },
 };
 </script>

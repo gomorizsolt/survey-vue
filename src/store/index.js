@@ -1,9 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import survey from "../resources/survey.json";
 import getters from "./getters";
 import actions from "./actions";
 import mutations from "./mutations";
+import getDefaultState from "./get-default-state";
 
 Vue.use(Vuex);
 
@@ -11,11 +11,7 @@ Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== "production";
 
 export default new Vuex.Store({
-  state: {
-    survey: survey.data,
-    answers: [],
-    currentPageIndex: 0,
-  },
+  state: getDefaultState(),
   mutations,
   getters,
   actions,
