@@ -24,6 +24,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { Dropdown, Radio, Menu } from "ant-design-vue";
 
 export default {
   beforeMount() {
@@ -32,6 +33,13 @@ export default {
     if (answer?.value) {
       this.selectedAnswer = answer.value;
     }
+  },
+  components: {
+    [Dropdown.name]: Dropdown,
+    [Radio.Group.name]: Radio.Group,
+    [Radio.name]: Radio,
+    [Menu.name]: Menu,
+    [Menu.Item.name]: Menu.Item,
   },
   data: () => ({
     selectedAnswer: "",

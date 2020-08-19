@@ -14,7 +14,15 @@
 </template>
 
 <script>
-export default {};
+import { Layout } from "ant-design-vue";
+
+export default {
+  components: {
+    [Layout.name]: Layout,
+    [Layout.Content.name]: Layout.Content,
+    [Layout.Footer.name]: Layout.Footer,
+  },
+};
 </script>
 
 <style>
