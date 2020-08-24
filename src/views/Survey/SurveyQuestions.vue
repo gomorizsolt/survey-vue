@@ -1,6 +1,7 @@
 <template>
   <section>
     <SurveyHeader />
+
     <div class="question" v-for="question in questions" :key="question.name">
       <h3 :class="{ required: question.is_required }">
         {{ question.name }}
@@ -8,12 +9,20 @@
       <p v-if="question.public_description">
         {{ question.public_description }}
       </p>
-      <SurveyAnswerSelector
-        :type="question.type"
+
+      <RadioGroup
+        v-if="question.type === 'radiogroup'"
+        :name="question.name"
+        :choices="question.choices"
+      />
+
+      <Dropdown
+        v-if="question.type === 'dropdown'"
         :name="question.name"
         :choices="question.choices"
       />
     </div>
+
     <SurveyFooter />
   </section>
 </template>
@@ -21,13 +30,15 @@
 <script>
 import { mapGetters } from "vuex";
 import SurveyHeader from "@/components/SurveyHeader";
-import SurveyAnswerSelector from "@/components/SurveyAnswerSelector";
 import SurveyFooter from "@/components/SurveyFooter";
+import RadioGroup from "@/components/RadioGroup";
+import Dropdown from "@/components/Dropdown";
 
 export default {
   components: {
     SurveyHeader,
-    SurveyAnswerSelector,
+    RadioGroup,
+    Dropdown,
     SurveyFooter,
   },
   computed: {
